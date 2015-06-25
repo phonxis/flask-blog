@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<section id="content" class="body">
+	<section id="post-text">
+		<b>
+			{{ post.title}}
+		</b><br>
+		<p>
+		{% if '<b>' in post.body %}
+			<b>{{ post.body }}</b>
+		{% else %}
+			{{ post.body }}
+		{% endif %}
+		</p>
+		{{ post.timestamp.day }}.{{ post.timestamp.month }}.{{ post.timestamp.year }} by {{ post.author.username }}<br>
+	</section>
+</section>
+
+{% endblock %}

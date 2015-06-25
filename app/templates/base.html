@@ -1,0 +1,45 @@
+<html>
+
+  <head>
+    {% if title %}
+    <title>{{ title }} - microblog</title>
+    {% else %}
+    <title>microblog</title>
+    {% endif %}
+    <link href="{{ url_for('.static', filename='css/for_add_post.css') }}" rel="stylesheet">
+    <link href="{{ url_for('.static', filename='css/main.css') }}" rel="stylesheet">
+  </head>
+
+  <body id="index" class="body">
+  <header id="banner" class="body">
+    <h1>
+      <a href="{{ url_for('index') }}">by phonxis
+      <strong>python+flask</strong></a>
+    </h1>
+    <nav id="navigate">
+      <ul>
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('login') }}">Login</a></li>
+        {% if g.user.is_authenticated() %}
+          <li><a href="{{ url_for('add_post') }}">Add post</a></li>
+          <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </header>
+
+
+
+    <hr>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+    {% for message in messages %}
+        <li>{{ message }} </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </body>
+</html>

@@ -1,0 +1,8 @@
+form textarea#post {
+     width: 800px;
+     height: 400px;
+}
+
+form textarea#title {
+     width: 800px;
+}

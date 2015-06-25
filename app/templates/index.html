@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section id="content" class="body">
+		{% for post in posts.items %}
+			<section id="post-text" class="featured">
+				<p>
+					<h2><b><a href="{{ url_for('read_more', id = post.id) }}">{{ post.title}}</a></b></h2>
+						{{ post.body }}
+					<br>
+					<p>
+					post date:
+					<b>
+						{{ post.timestamp.day }}.{{ post.timestamp.month }}.{{ post.timestamp.year }}
+					</b>
+					author:
+					<b>
+						{{ post.author.username }}
+					</b> 
+					</p>
+				</p>
+			</section>
+		{% endfor %}
+		<table width="800px">
+				<tr>
+					
+
+						{% if posts.has_prev %}
+						<td id="paginate-left" style="width:120px;">
+							<a href="{{ url_for('index', page = posts.prev_num) }}"> << Newer posts</a>
+						</td>
+						{% else %}
+						<td>
+						</td>
+						{% endif %} 
+
+					
+					<td>
+					</td>
+					
+
+						{% if posts.has_next %}
+						<td id="paginate-right" style="width:120px;">
+							<a href="{{ url_for('index', page = posts.next_num) }}">Older posts >></a>
+							</td>
+						{% else %}
+						<td>
+						</td>
+						{% endif %}
+
+					
+				</tr>
+		</table>
+
+</section>
+
+{% endblock %}
