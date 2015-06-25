@@ -84,6 +84,14 @@ def add_post():
 							title='Add post',
 							form=form)
 
+@app.route('/delete_post<int:id>')
+@login_required
+def delete_post(id=0):
+	p = Post.query.get(id)
+	db.session.delete(p)
+	db.session.commit()
+	return redirect(url_for('index'))
+
 @app.route('/post_<int:id>')
 def read_more(id=0):
 	#p = Post.query.filter_by(id=id).first()
