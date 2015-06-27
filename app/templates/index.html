@@ -6,7 +6,7 @@
 			<section id="post-text" class="featured">
 				<p>
 					<h2><b><a href="{{ url_for('read_more', id = post.id) }}">{{ post.title}}</a></b></h2>
-						{{ post.body }}
+						{{ post.body[:200] }}...
 					<br>
 					<p>
 					post date:
